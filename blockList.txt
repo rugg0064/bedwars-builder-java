@@ -1,0 +1,6 @@
+"Wool",16,4,"Iron"
+"Hardened Clay",16,12,"Iron"
+"Blast-Proof Glass",4,12,"Iron"
+"End Stone",12,24,"Iron"
+"Wood Planks",16,4,"Gold"
+"Obsidian",4,4,"Emerald"

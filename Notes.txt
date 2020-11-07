@@ -1,0 +1,20 @@
+   3   
+  323  
+ 32123 
+3210123
+3210123
+ 32123 
+  323  
+   3
+blocks in layer
+L | Y
+-----
+0 | 2
+1 | 6
+2 | 10
+3 | 14
+
+Formula 
+b(l) = 4(l) + 2
+
+blocks in a layer = sum of b() from layer to 0
