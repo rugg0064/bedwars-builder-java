@@ -47,8 +47,6 @@ public class Base
             String resource = key.getResource();
             costs.put(resource, cost + (costs.containsKey(resource) ? (int)costs.get(resource) : 0) );
             printOrder.add(key);
-            //System.out.printf("%s%n", key.getName());
-            //System.out.printf("%s : Q=%s P=%s %s%n", key, count, cost, resource);
         }
 
         Iterator k = printOrder.iterator();
