@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * Class representing a base with layers of blocks
@@ -12,6 +15,58 @@ public class Base
     public Base()
     {
         this.layers = new ArrayList<>();
+    }
+
+    public int getCost()
+    {
+        HashMap quantity = new HashMap(1);
+        HashMap costs = new HashMap(1);
+        for(int i = 0; i < this.layers.size(); i++)
+        {
+            Block block = this.layers.get(i);
+            int count = blocksInLayer(i+1);
+            quantity.put(block, count + (quantity.containsKey(block) ? (int)quantity.get(block) : 0) );
+            costs.put(block.getResource(), 0);
+        }
+        
+        LinkedList<Block> printOrder = new LinkedList();
+
+        Iterator i = quantity.keySet().iterator();
+        while(i.hasNext())
+        {
+            Block key = (Block) (i.next());
+            int count = (int) quantity.get(key);
+
+            int minOrderCount = count / key.getOrderCount();
+            if( count % key.getOrderCount() > 0)
+            {
+                minOrderCount += 1;
+            }
+
+            int cost = minOrderCount * key.getCost();
+            String resource = key.getResource();
+            costs.put(resource, cost + (costs.containsKey(resource) ? (int)costs.get(resource) : 0) );
+            printOrder.add(key);
+            //System.out.printf("%s%n", key.getName());
+            //System.out.printf("%s : Q=%s P=%s %s%n", key, count, cost, resource);
+        }
+
+        Iterator k = printOrder.iterator();
+        while(k.hasNext())
+        {
+            System.out.println( ((Block) k.next()).getName());
+        }
+        System.out.println();
+
+        Iterator j = costs.keySet().iterator();
+        while(j.hasNext())
+        {
+            String key = (String) j.next();
+            int cost = (int)(costs.get(key));
+            System.out.printf("%s : %d%n", key, cost);
+        }
+
+        return 0;
     }
 
     // amount of blocks in a bottom ring of layer
