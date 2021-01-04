@@ -4,8 +4,8 @@ import java.util.Scanner;
 /**
  * Main class
  * 
- * @author Matthew Kotras
- * @version 11/06/2020
+ * @author Rugg0064
+ * @version 01/04/2021
  */
 public class Main
 {
